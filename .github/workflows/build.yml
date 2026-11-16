@@ -12,7 +12,7 @@ jobs:
 
       - name: Bouw de x64 installer
         shell: powershell
-        run: .\scripts\build-installer-x64.ps1 -Configuration Release
+        run: .\scripts\build-installer-x64.ps1 -Configuration Release -VisualStudioEdition Enterprise
 
       - name: Upload de gebouwde installer
         uses: actions/upload-artifact@v4
