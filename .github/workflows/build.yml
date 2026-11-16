@@ -1,0 +1,21 @@
+name: Build Mixomo Installer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - name: Checkout broncode
+        uses: actions/checkout@v4
+
+      - name: Bouw de x64 installer
+        shell: powershell
+        run: .\scripts\build-installer-x64.ps1 -Configuration Release
+
+      - name: Upload de gebouwde installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mixomo-EqualizerAPO-Installer
+          path: output/installer/*.exe
